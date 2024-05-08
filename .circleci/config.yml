@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build the website
+          command: npm run build
+      # Add more steps if needed, like running tests
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      # Add deployment job if needed
